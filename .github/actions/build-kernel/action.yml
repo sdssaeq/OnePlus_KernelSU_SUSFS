@@ -1757,6 +1757,10 @@ runs:
         echo "============================================"
         
         make LD="$COMMON_KERNEL_FOLDER/ld-wrapper" HOSTLD="$COMMON_KERNEL_FOLDER/ld-wrapper" O="$OUT" gki_defconfig
+        # Disable module signature
+        scripts/config --file "$OUT/.config" -d MODULE_SIG
+        scripts/config --file "$OUT/.config" -d MODULE_SIG_ALL
+        scripts/config --file "$OUT/.config" -d MODULE_SIG_FORCE
         
         LOCAL_LOCALVERSION="${CUSTOM_LOCALVERSION:--OP-WILD}"
         if [ -n "${LOCAL_LOCALVERSION:-}" ]; then
