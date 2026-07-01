@@ -1837,7 +1837,6 @@ runs:
           cp "$OUT/.config" "$DEBUG_ARTIFACTS_FOLDER/kernel.config"
           git -C "$COMMON_KERNEL_FOLDER" rev-parse HEAD > "$DEBUG_ARTIFACTS_FOLDER/kernel_commit.txt"
           git -C "$COMMON_KERNEL_FOLDER" remote get-url origin > "$DEBUG_ARTIFACTS_FOLDER/kernel_repo.txt"
-          tar -czf "$DEBUG_ARTIFACTS_FOLDER/kernel_source.tar.gz" -C "$COMMON_KERNEL_FOLDER" .
           cp build.log "$DEBUG_ARTIFACTS_FOLDER/build.log"
           cp install.log "$DEBUG_ARTIFACTS_FOLDER/install.log"
           rsync -av --no-links --exclude='build' "$COMMON_KERNEL_FOLDER/out/install/lib/modules"/*/ "$DEBUG_ARTIFACTS_FOLDER"
